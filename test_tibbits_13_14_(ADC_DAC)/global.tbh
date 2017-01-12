@@ -1,0 +1,35 @@
+'DEFINES-------------------------------------------------------------
+const CR_LF=chr(10)+chr(13)
+
+#define TBT13_CLK_PIN PL_IO_NUM_9_TX0
+#define TBT13_DATA_PIN PL_IO_NUM_8_RX0
+
+#IF PLATFORM_ID=TPP2W or PLATFORM_ID=TPP2WG2
+	#define TBT14_CLK_PIN PL_IO_NUM_11_TX1
+	#define TBT14_DATA_PIN PL_IO_NUM_10_RX1
+	#define TBT14_LOAD_PIN PL_IO_NUM_1
+	#define TBT14_BUSY_PIN PL_IO_NUM_17_INT1
+#ELIF PLATFORM_ID=TPP3W or PLATFORM_ID=TPP3WG2
+	#define TBT14_CLK_PIN PL_IO_NUM_32
+	#define TBT14_DATA_PIN PL_IO_NUM_33
+	#define TBT14_LOAD_PIN PL_IO_NUM_4
+	#define TBT14_BUSY_PIN PL_IO_NUM_20_INT4
+#ELSE
+	XXXX 'Unsupported platform
+#ENDIF
+
+#define ADC_RES_LOW  0
+#define ADC_RES_MID  1
+#define ADC_RES_HIGH 2
+
+#define ADC_RESOLUTION ADC_RES_HIGH
+
+
+
+'INCLUDES------------------------------------------------------------
+include "super_i2c.tbh"
+include "ssi.tbh"
+include "tbt13.tbh"
+include "tbt14.tbh"
+
+'DECLARATIONS--------------------------------------------------------

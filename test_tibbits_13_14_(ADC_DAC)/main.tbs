@@ -1,0 +1,41 @@
+include "global.tbh"
+
+'====================================================================
+
+sub on_sys_init()
+	if tbt13_init(YES)=NG then
+		sys.debugprint("SSI channel could not be allocated for the ADC module (#13),  using bit banging instead."+CR_LF)
+	end if
+	if tbt14_init(YES)=NG then
+		sys.debugprint("SSI channel could not be allocated for the DAC module (#14), using bit banging instead."+CR_LF)
+	end if
+
+	'set DAC outputs
+	tbt14_set_mv(DAC_1,-9500)	'-9.50V
+	tbt14_set_mv(DAC_2,-5000)	'-5.00V
+	tbt14_set_mv(DAC_3,1250)	'+1.25V
+	tbt14_set_mv(DAC_4,7000)	'+7.00V
+end sub
+
+sub on_sys_timer()
+	dim adc1, adc2, adc3, adc4 as integer
+	
+	tbt13_channel_select(ADC_1)	'select the channel
+	tbt13_get_prev()			'discard first read, can use tbt13_read_prev() or tbt13_read_prev_mv() for that
+	adc1=tbt13_get_prev_mv()	'now get the data
+
+	tbt13_channel_select(ADC_2)	'onto the next channel...
+	tbt13_get_prev()
+	adc2=tbt13_get_prev_mv()
+
+	tbt13_channel_select(ADC_3)
+	tbt13_get_prev()
+	adc3=tbt13_get_prev_mv()
+
+	tbt13_channel_select(ADC_4)
+	tbt13_get_prev()
+	adc4=tbt13_get_prev_mv()
+
+	sys.debugprint("CH1:"+stri(adc1)+" CH2:"+stri(adc2)+" CH3:"+stri(adc3)+" CH4:"+stri(adc4)+chr(13)+chr(10))
+end sub
+

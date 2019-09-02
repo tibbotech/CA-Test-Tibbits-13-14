@@ -1,0 +1,105 @@
+[project]
+version = 1
+platform = TPP3W(G2)
+src_lib_ver = 2_01_03
+name = test_tibbits_13_14
+output = test_tibbits_13_14.tpc
+debug = on
+defines = /dLCD_TYPE=SOLOMON_SSD1963 /dOBJECT_LCD=LCD_ENABLED /dOBJECT_FD=FD_ENABLED /dOBJECT_KP=KP_ENABLED /dOBJECT_WLN=WLN_ENABLED
+transport = udp_winpcap
+
+[address1]
+platform = TPP2W
+transport = udp_winpcap
+address = 0.36.119.81.150.153
+
+[address2]
+platform = TPP3W
+transport = udp_winpcap
+address = 0.36.119.81.103.34
+
+[address3]
+platform = TPP2N
+transport = udp_winpcap
+address = 
+
+[file1]
+path = main.tbs
+type = basic
+format = 
+condition = 
+locked = no
+location = 
+
+[file2]
+path = global.tbh
+type = header
+format = 
+condition = 
+locked = no
+location = 
+
+[file3]
+path = super_i2c.tbh
+type = header
+format = 
+condition = 
+locked = no
+location = project
+
+[file4]
+path = super_i2c.tbs
+type = basic
+format = 
+condition = 
+locked = no
+location = project
+
+[file5]
+path = tbt13.tbh
+type = header
+format = 
+condition = 
+locked = no
+location = project
+
+[file6]
+path = tbt13.tbs
+type = basic
+format = 
+condition = 
+locked = no
+location = project
+
+[file7]
+path = tbt14.tbh
+type = header
+format = 
+condition = 
+locked = no
+location = project
+
+[file8]
+path = tbt14.tbs
+type = basic
+format = 
+condition = 
+locked = no
+location = project
+
+[file9]
+path = ssi.tbh
+type = header
+format = 
+condition = 
+locked = no
+location = project
+
+[file10]
+path = ssi.tbs
+type = basic
+format = 
+condition = 
+locked = no
+location = project
+
